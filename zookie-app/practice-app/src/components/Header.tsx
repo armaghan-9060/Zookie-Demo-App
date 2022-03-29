@@ -23,11 +23,13 @@ function Header() {
     <div>
       <React.Fragment>
         <AppBar
-          position="sticky"
+          elevation={0}
+          position="fixed"
           sx={{
             backgroundColor: "black",
             height: "75px",
             paddingTop: "5px",
+            background: "transparent",
           }}
         >
           <Toolbar>

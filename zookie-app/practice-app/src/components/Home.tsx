@@ -7,6 +7,12 @@ import { Box, BoxProps } from "@mui/material";
 import HomeImg from "../assets/home-2-img.png";
 import { Button } from "@mui/material";
 import HomeBg2 from "../assets/homr-2-bg-bottom.png";
+import {
+  MainContainer,
+  TextBox,
+  ImgBox,
+  HeroImg,
+} from "../components/Reuseable";
 const HomeMain = styled("div")({
   width: "100%",
   height: "700px",
@@ -15,27 +21,7 @@ const HomeMain = styled("div")({
   backgroundSize: "cover",
   backgroundPosition: "center center",
 });
-const MainContainer = styled(Box)({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignContent: "center",
-  alignItems: "center",
-});
-const TextBox = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  color: "white",
-  lineHeight: "2",
-});
-const ImgBox = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-});
-const HeroImg = styled(Box)({
-  position: "relative",
-  zIndex: "20",
-});
+
 const BackImg = styled(Box)({
   position: "absolute",
   opacity: "0.15",

@@ -1,7 +1,10 @@
 import React from "react";
 import { styled } from "@mui/system";
 import { Box } from "@mui/material";
-
+interface ContainerProps {
+  textcolor: string;
+  maxwidth: string;
+}
 export const MainContainer = styled(Box)({
   display: "flex",
   flexDirection: "row",
@@ -10,12 +13,13 @@ export const MainContainer = styled(Box)({
   alignItems: "center",
   paddingTop: "70px",
 });
-export const TextBox = styled(Box)({
+export const TextBox = styled(Box)((props: ContainerProps) => ({
   display: "flex",
   flexDirection: "column",
-  color: "white",
+  color: props.textcolor,
   lineHeight: "2",
-});
+  maxWidth: props.maxwidth,
+}));
 export const ImgBox = styled(Box)({
   display: "flex",
   flexDirection: "column",

@@ -1,16 +1,36 @@
 import React from "react";
+import { ThemeProvider } from "@mui/material";
 import Header from "./components/Header";
-import { makeStyles, ThemeProvider } from "@mui/styles";
-import theme from "./components/Theme";
-import Footer from "./components/Footer";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
+import theme from "./components/Theme";
+import About from "./components/About";
+import HomeImg from "./assets/home-2-img.png";
+import HomeBg from "./assets/home-2-bg.png";
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Home />
-      <Footer />
-    </ThemeProvider>
+    <div>
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Home
+          heading="Make Your Marketing Real."
+          description="Ut enim ad minima veniam quis nostrum exercitationem ullam
+              corporis at suscipit laboriosam nisi ut aliquid a commodi
+              consequatur Quis autem."
+          buttontext="LEARN MORE"
+          image={HomeImg}
+          bgColor="#007bff"
+          textcolor="white"
+          maxwidth="500px"
+          imageHeight="600px"
+          variant="h2"
+          ButtonType="contained"
+        />
+        <About />
+
+        <Footer />
+      </ThemeProvider>
+    </div>
   );
 }
 

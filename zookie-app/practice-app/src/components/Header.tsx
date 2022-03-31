@@ -1,6 +1,6 @@
 import { AppBar, Tab, Tabs, Toolbar } from "@mui/material";
 import { borderBottom, styled } from "@mui/system";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/zooki.png";
 
 const TabComponent = styled("div")({
@@ -59,3 +59,6 @@ function Header() {
 }
 
 export default Header;
+function componentDidMount() {
+  throw new Error("Function not implemented.");
+}

@@ -6,6 +6,7 @@ import { Box, BoxProps } from "@mui/material";
 import { Button } from "@mui/material";
 import HomeBg2 from "../assets/homr-2-bg-bottom.png";
 import HomeBg from "../assets/home-2-bg.png";
+import CircleRoundedIcon from "@mui/icons-material/CircleRounded";
 import {
   MainContainer,
   TextBox,
@@ -13,9 +14,14 @@ import {
   HeroImg,
 } from "../components/Reuseable";
 import { JsxElement } from "typescript";
+import { MarginOutlined } from "@mui/icons-material";
 
 interface mainProps {
   bgColor: string;
+}
+interface buttonProps {
+  buttonColor: string;
+  buttonTextColor: string;
 }
 
 const HomeMain = styled("div")((props: mainProps) => ({
@@ -36,18 +42,29 @@ const BackImg = styled(Box)({
   zIndex: "10",
 });
 
-const CustomButton = styled(Button)({
-  backgroundColor: "#FF8700",
+const CustomButton = styled(Button)((props: buttonProps) => ({
+  backgroundColor: props.buttonColor,
+  color: props.buttonTextColor,
   maxWidth: "180px",
   padding: "10px",
-});
+}));
+
+const TextButton = styled(Button)(() => ({
+  backgroundColor: "transparent",
+  maxWidth: "220px",
+  padding: "10px",
+  paddingLeft: "0",
+}));
 
 interface HomeProps {
+  isSpanButton?: boolean;
   heading: string;
   description: string;
   buttontext: string;
   image: string;
   bgColor: string;
+  buttonColor: string;
+  buttonTextColor: string;
   textcolor: string;
   maxwidth: string;
   imageHeight: string;
@@ -75,11 +92,14 @@ function Home({
   buttontext,
   image,
   bgColor,
+  buttonColor,
+  buttonTextColor,
   textcolor,
   maxwidth,
   imageHeight,
   variant,
   ButtonType,
+  isSpanButton,
 }: HomeProps) {
   return (
     <div>
@@ -90,9 +110,35 @@ function Home({
               {heading}
             </Typography>
             <p>{description}</p>
-            <CustomButton variant={ButtonType} size="medium">
-              {buttontext}
-            </CustomButton>
+            {isSpanButton ? (
+              <TextButton>
+                {" "}
+                <span style={{ color: "#FF8700", fontSize: "12px" }}>
+                  {" "}
+                  <CircleRoundedIcon sx={{ fontSize: 8 }} /> Learn More{" "}
+                </span>{" "}
+                <span
+                  style={{
+                    color: "black",
+                    marginLeft: "5px",
+                    fontSize: "12px",
+                  }}
+                >
+                  {" "}
+                  About Us{" "}
+                </span>{" "}
+                {buttontext}{" "}
+              </TextButton>
+            ) : (
+              <CustomButton
+                disableElevation
+                variant={ButtonType}
+                buttonColor={buttonColor}
+                buttonTextColor={buttonTextColor}
+              >
+                {buttontext}
+              </CustomButton>
+            )}
           </TextBox>
           <ImgBox>
             <HeroImg>

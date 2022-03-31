@@ -7,6 +7,7 @@ import theme from "./components/Theme";
 import About from "./components/About";
 import HomeImg from "./assets/home-2-img.png";
 import HomeBg from "./assets/home-2-bg.png";
+import Services from "./components/Services";
 function App() {
   return (
     <div>
@@ -25,9 +26,11 @@ function App() {
           imageHeight="600px"
           variant="h2"
           ButtonType="contained"
+          buttonColor="#FF8700"
+          buttonTextColor="white"
         />
         <About />
-
+        <Services />
         <Footer />
       </ThemeProvider>
     </div>

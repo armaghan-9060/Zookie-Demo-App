@@ -8,6 +8,7 @@ import About from "./components/About";
 import HomeImg from "./assets/home-2-img.png";
 import HomeBg from "./assets/home-2-bg.png";
 import Services from "./components/Services";
+import Contact from "./components/Contact";
 function App() {
   return (
     <div>
@@ -31,6 +32,7 @@ function App() {
         />
         <About />
         <Services />
+        <Contact />
         <Footer />
       </ThemeProvider>
     </div>

@@ -36,6 +36,9 @@ function About() {
         <CardFlex>
           <CustmCard
             isleft={false}
+            isButton={false}
+            isElevation={true}
+            isBackground={false}
             heading="Creative Design"
             text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur at aut odit aut fugit sed quia consequuntur magni."
             img={
@@ -56,6 +59,9 @@ function About() {
           />
           <CustmCard
             isleft={false}
+            isButton={false}
+            isElevation={true}
+            isBackground={false}
             heading="Strategy Solutions"
             text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur at aut odit aut fugit sed quia consequuntur magni."
             img={
@@ -76,6 +82,9 @@ function About() {
           />
           <CustmCard
             isleft={false}
+            isButton={false}
+            isElevation={true}
+            isBackground={false}
             heading="Dynamic Growth"
             text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur at aut odit aut fugit sed quia consequuntur magni."
             img={

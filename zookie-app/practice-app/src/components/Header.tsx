@@ -5,7 +5,7 @@ import logo from "../assets/zooki.png";
 
 const TabComponent = styled("div")({
   fontFamily: "sans-serif",
-  color: "rgba(255, 255, 255, 0.6)",
+  color: "rgba(255, 255, 255, 0.3)",
 });
 const Tab1 = styled(Tab)({
   paddingBottom: "0px",
@@ -16,9 +16,19 @@ const Tab1 = styled(Tab)({
   "&:hover": {
     color: "#ffffff !important",
     borderBottom: "1px solid white",
+    fontWeight: "bold",
   },
 });
 function Header() {
+  const [colorChange, setColorchange] = useState(false);
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 10) {
+      setColorchange(false);
+    } else {
+      setColorchange(true);
+    }
+  };
+  window.addEventListener("scroll", changeNavbarColor);
   return (
     <div>
       <React.Fragment>
@@ -29,7 +39,7 @@ function Header() {
             backgroundColor: "black",
             height: "75px",
             paddingTop: "5px",
-            background: "transparent",
+            background: colorChange ? "transparent" : "black",
           }}
         >
           <Toolbar>
@@ -59,6 +69,3 @@ function Header() {
 }
 
 export default Header;
-function componentDidMount() {
-  throw new Error("Function not implemented.");
-}

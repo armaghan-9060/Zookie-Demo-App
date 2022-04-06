@@ -31,7 +31,7 @@ const CardFlex = styled(Box)({
 function About() {
   return (
     <>
-      <AboutContainer>
+      <AboutContainer id="About">
         <HeadingStyle heading="About Us"></HeadingStyle>
         <CardFlex>
           <CustmCard

@@ -20,7 +20,14 @@ const Tab1 = styled(Tab)({
   },
 });
 function Header() {
+  // const TABS= [{
+  //     label: 'Home', value: '1', id: 'Home',
+  //     label: '', value: '1', id: 'Home',
+  //     label: 'Home', value: '1', id: 'Home',
+  //     label: 'Home', value: '1', id: 'Home',
+  // }]
   const [colorChange, setColorchange] = useState(false);
+
   const changeNavbarColor = () => {
     if (window.scrollY >= 10) {
       setColorchange(false);
@@ -29,6 +36,23 @@ function Header() {
     }
   };
   window.addEventListener("scroll", changeNavbarColor);
+  //tabs handler
+  const [value, setValue] = React.useState("one");
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+  //scroll
+
+  const onScrollClick = (id: string) => {
+    console.log(
+      "document?.getElementById(id) :>> ",
+      document?.getElementById(id)?.offsetHeight
+    );
+    window.scrollTo({
+      top: (document.getElementById(id)?.offsetTop as number) - 75,
+      behavior: "smooth",
+    });
+  };
   return (
     <div>
       <React.Fragment>
@@ -49,16 +73,27 @@ function Header() {
               style={{ width: "100px", marginLeft: "40px" }}
             />
 
-            <Tabs sx={{ marginLeft: "auto" }}>
+            <Tabs
+              sx={{ marginLeft: "auto" }}
+              value={value}
+              onChange={handleChange}
+            >
               <TabComponent>
-                <Tab1 label="Home" />
-                <Tab1 label="About" />
-                <Tab1 label="Services" />
+                {/* {TABS.map((tab)=> <Tab1 key = {tab.value} label={tab.label} onClick={()=> onScrollClick(tab.id)} />)} */}
+                <Tab1 label="Home" onClick={() => onScrollClick("Home")} />
+                <Tab1 label="About" onClick={() => onScrollClick("About")} />
+                <Tab1
+                  label="Services"
+                  onClick={() => onScrollClick("Services")}
+                />
                 <Tab1 label="Feature" />
                 <Tab1 label="Pricing" />
                 <Tab1 label="Clients" />
                 <Tab1 label="Blog" />
-                <Tab1 label="Contact Us " />
+                <Tab1
+                  label="Contact Us "
+                  onClick={() => onScrollClick("Contact")}
+                />
               </TabComponent>
             </Tabs>
           </Toolbar>

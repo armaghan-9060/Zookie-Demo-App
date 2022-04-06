@@ -26,7 +26,7 @@ function Contact() {
 
   return (
     <>
-      <ContactContainer>
+      <ContactContainer id="Contact">
         <HeadingStyle heading="GET IN TOUCH"></HeadingStyle>
         <Grid
           container

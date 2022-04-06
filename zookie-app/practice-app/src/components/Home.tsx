@@ -104,7 +104,7 @@ function Home({
   return (
     <div>
       <HomeMain bgColor={bgColor}>
-        <MainContainer>
+        <MainContainer id="Home">
           <TextBox textcolor={textcolor} maxwidth={maxwidth}>
             <Typography variant={variant} sx={{ fontWeight: "bold" }}>
               {heading}

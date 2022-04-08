@@ -18,6 +18,11 @@ const Tab1 = styled(Tab)({
     borderBottom: "1px solid white",
     fontWeight: "bold",
   },
+  "&:active": {
+    color: "#ffffff !important",
+    borderBottom: "1px solid white",
+    fontWeight: "bold",
+  },
 });
 function Header() {
   // const TABS= [{
@@ -29,10 +34,10 @@ function Header() {
   const [colorChange, setColorchange] = useState(false);
 
   const changeNavbarColor = () => {
-    if (window.scrollY >= 10) {
-      setColorchange(false);
-    } else {
+    if (window.scrollY >= 80) {
       setColorchange(true);
+    } else {
+      setColorchange(false);
     }
   };
   window.addEventListener("scroll", changeNavbarColor);
@@ -63,7 +68,7 @@ function Header() {
             backgroundColor: "black",
             height: "75px",
             paddingTop: "5px",
-            background: colorChange ? "transparent" : "black",
+            background: colorChange ? "black" : "transparent",
           }}
         >
           <Toolbar>
@@ -80,11 +85,20 @@ function Header() {
             >
               <TabComponent>
                 {/* {TABS.map((tab)=> <Tab1 key = {tab.value} label={tab.label} onClick={()=> onScrollClick(tab.id)} />)} */}
-                <Tab1 label="Home" onClick={() => onScrollClick("Home")} />
-                <Tab1 label="About" onClick={() => onScrollClick("About")} />
+                <Tab1
+                  label="Home"
+                  onClick={() => onScrollClick("Home")}
+                  value="one"
+                />
+                <Tab1
+                  label="About"
+                  onClick={() => onScrollClick("About")}
+                  value="two"
+                />
                 <Tab1
                   label="Services"
                   onClick={() => onScrollClick("Services")}
+                  value="three"
                 />
                 <Tab1 label="Feature" />
                 <Tab1 label="Pricing" />

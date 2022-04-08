@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, styled } from "@mui/system";
 import HeadingStyle from "./HeadingStyle";
+import axios from "axios";
 import {
   Card,
   CardActionArea,
@@ -19,6 +20,7 @@ import FormatColorFillIcon from "@mui/icons-material/FormatColorFill";
 import AppleIcon from "@mui/icons-material/Apple";
 import NatureOutlinedIcon from "@mui/icons-material/NatureOutlined";
 import LightbulbCircleOutlinedIcon from "@mui/icons-material/LightbulbCircleOutlined";
+import { useEffect, useState } from "react";
 const ServicesContainer = styled("div")({
   width: "100%",
   height: "auto",
@@ -34,6 +36,23 @@ const CardFlex1 = styled(Box)({
   maxWidth: 1699,
 });
 function Services() {
+  // hook to hold data from online api
+  const [data, setData] = useState([]);
+
+  //hook to to run API instantly using useeffect
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => {
+        //assigning the API data to the hook usestate
+        setData(response.data);
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log("failed to fetch data from API");
+      });
+  }, []);
+
   const CardData = [
     {
       heading: "Awesome Support",
@@ -179,16 +198,25 @@ function Services() {
       <ServicesContainer id="Services">
         <HeadingStyle heading="OUR SERVICES"></HeadingStyle>
         <CardFlex1>
-          {CardData.map((card) => (
-            <CustmCard
-              isleft={true}
-              heading={card.heading}
-              text={card.text}
-              img={card.img}
-              isButton={true}
-              isElevation={false}
-              isBackground={true}
-            />
+          {CardData.map((card, ind) => (
+            <>
+              {ind < 6
+                ? data.map(
+                    (d: any, ind) =>
+                      ind < 1 && (
+                        <CustmCard
+                          isleft={true}
+                          heading={d.title}
+                          text={d.body}
+                          img={card.img}
+                          isButton={true}
+                          isElevation={false}
+                          isBackground={true}
+                        />
+                      )
+                  )
+                : null}
+            </>
           ))}
         </CardFlex1>
       </ServicesContainer>

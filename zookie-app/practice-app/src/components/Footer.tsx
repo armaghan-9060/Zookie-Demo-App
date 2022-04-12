@@ -7,7 +7,7 @@ import footer from "/Users/trimulabs/Documents/GitHub/Zookie-Demo-App/zookie-app
 import { classicNameResolver } from "typescript";
 const FooterDesign = styled("div")({
   width: "100%",
-  height: "400px",
+  height: "auto",
   backgroundImage: `url(${footer})`,
   backgroundSize: "cover",
   backgroundPosition: "center center",

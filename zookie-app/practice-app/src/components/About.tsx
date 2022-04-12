@@ -15,18 +15,26 @@ import NatureOutlinedIcon from "@mui/icons-material/NatureOutlined";
 import LightbulbCircleOutlinedIcon from "@mui/icons-material/LightbulbCircleOutlined";
 const AboutContainer = styled("div")({
   width: "100%",
-  height: "1000px",
+  height: "autp",
   backgroundImage: `url(${AboutBg})`,
   backgroundSize: "cover",
   backgroundPosition: "center center",
+  paddingBottom: "10px",
 });
 
-const CardFlex = styled(Box)({
+const CardFlex = styled(Box)((props) => ({
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
   marginTop: "-20px",
-});
+  [props.theme.breakpoints.down("lg")]: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    width: "100%",
+  },
+}));
 
 function About() {
   return (
@@ -113,7 +121,7 @@ function About() {
           image={AboutImage}
           bgColor="none"
           textcolor="black"
-          maxwidth="600px"
+          maxwidth="100%"
           imageHeight="400px"
           variant="h6"
           ButtonType="contained"

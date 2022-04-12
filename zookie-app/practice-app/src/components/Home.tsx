@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@mui/system";
+import { styled, width } from "@mui/system";
 import { Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Box, BoxProps } from "@mui/material";
@@ -26,21 +26,35 @@ interface buttonProps {
 
 const HomeMain = styled("div")((props: mainProps) => ({
   width: "100%",
-  height: "700px",
+  height: "auto",
   backgroundColor: props.bgColor,
   backgroundImage: `url(${HomeBg})`,
   backgroundSize: "cover",
   backgroundPosition: "center center",
 }));
 
-const BackImg = styled(Box)({
+const BackImg = styled(Box)((props) => ({
   position: "absolute",
   opacity: "0.15",
   margin: "auto",
   paddingTop: "320px",
   paddingLeft: "30px",
+  overflow: "hidden",
   zIndex: "10",
-});
+  [props.theme.breakpoints.down("lg")]: {
+    img: {
+      width: "500px",
+    },
+  },
+  [props.theme.breakpoints.down("sm")]: {
+    img: {
+      width: "300px",
+      height: "200px",
+    },
+    paddingTop: "150px",
+    paddingLeft: "30px",
+  },
+}));
 
 const CustomButton = styled(Button)((props: buttonProps) => ({
   backgroundColor: props.buttonColor,
@@ -49,11 +63,12 @@ const CustomButton = styled(Button)((props: buttonProps) => ({
   padding: "10px",
 }));
 
-const TextButton = styled(Button)(() => ({
+const TextButton = styled(Button)((props) => ({
   backgroundColor: "transparent",
   maxWidth: "220px",
   padding: "10px",
   paddingLeft: "0",
+  [props.theme.breakpoints.down("lg")]: {},
 }));
 
 interface HomeProps {

@@ -9,10 +9,18 @@ import HomeImg from "./assets/home-2-img.png";
 import HomeBg from "./assets/home-2-bg.png";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
+import { styled } from "@mui/system";
+
+const AppContainer = styled("div")({
+  width: "100%",
+  maxWidth: "100%",
+  overflow: "hidden",
+});
+
 function App() {
   return (
-    <div>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <AppContainer>
         <Header />
         <Home
           heading="Make Your Marketing Real."
@@ -23,7 +31,7 @@ function App() {
           image={HomeImg}
           bgColor="#007bff"
           textcolor="white"
-          maxwidth="500px"
+          maxwidth="100%"
           imageHeight="600px"
           variant="h2"
           ButtonType="contained"
@@ -34,8 +42,8 @@ function App() {
         <Services />
         <Contact />
         <Footer />
-      </ThemeProvider>
-    </div>
+      </AppContainer>
+    </ThemeProvider>
   );
 }
 

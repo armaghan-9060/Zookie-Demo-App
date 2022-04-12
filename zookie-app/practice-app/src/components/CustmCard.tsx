@@ -47,6 +47,7 @@ const CustmCard = ({
       sx={{
         maxWidth: 345,
         m: 5,
+
         background: "transparent",
         "&:hover": {
           boxShadow: isBackground ? "2px 2px 20px 2px #F5F5F5 " : "none",

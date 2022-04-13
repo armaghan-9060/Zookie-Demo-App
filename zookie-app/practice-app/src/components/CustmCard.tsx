@@ -15,6 +15,8 @@ import { ReactNode } from "react";
 import { JsxElement } from "typescript";
 import { styled } from "@mui/styles";
 import { Box, color } from "@mui/system";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 interface CardsProp {
   isleft: Boolean;
   heading: string;
@@ -23,6 +25,7 @@ interface CardsProp {
   isButton: Boolean;
   isElevation: Boolean;
   isBackground: Boolean;
+  cardType?: string;
 }
 
 const CustomCardMedia = styled(Box)({
@@ -39,13 +42,16 @@ const CustmCard = ({
   img,
   isButton,
   isElevation,
+  cardType,
   isBackground,
 }: CardsProp) => {
+  const theme = useTheme();
+  const showcard = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <Card
       elevation={isElevation ? 0 : 1}
       sx={{
-        maxWidth: 345,
+        maxWidth: showcard && cardType !== "serviceCard" ? "100%" : "345px",
         m: 5,
 
         background: "transparent",
@@ -59,7 +65,7 @@ const CustmCard = ({
         <Typography
           align={isleft ? "left" : "center"}
           gutterBottom
-          variant="h5"
+          variant={showcard ? "h6" : "h5"}
           component="div"
         >
           {heading}

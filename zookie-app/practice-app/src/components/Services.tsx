@@ -197,7 +197,7 @@ function Services() {
     <>
       <ServicesContainer id="Services">
         <HeadingStyle heading="OUR SERVICES"></HeadingStyle>
-        <CardFlex1>
+        <CardFlex1 sx={{ width: "100%" }}>
           {CardData.map((card, ind) => (
             <>
               {ind < 6
@@ -212,6 +212,7 @@ function Services() {
                           isButton={true}
                           isElevation={false}
                           isBackground={true}
+                          cardType="serviceCard"
                         />
                       )
                   )

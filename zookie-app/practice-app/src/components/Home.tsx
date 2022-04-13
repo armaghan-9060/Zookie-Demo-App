@@ -6,6 +6,8 @@ import { Box, BoxProps } from "@mui/material";
 import { Button } from "@mui/material";
 import HomeBg2 from "../assets/homr-2-bg-bottom.png";
 import HomeBg from "../assets/home-2-bg.png";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import CircleRoundedIcon from "@mui/icons-material/CircleRounded";
 import {
   MainContainer,
@@ -116,12 +118,17 @@ function Home({
   ButtonType,
   isSpanButton,
 }: HomeProps) {
+  const theme = useTheme();
+  const showText = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <div>
       <HomeMain bgColor={bgColor}>
         <MainContainer id="Home">
           <TextBox textcolor={textcolor} maxwidth={maxwidth}>
-            <Typography variant={variant} sx={{ fontWeight: "bold" }}>
+            <Typography
+              variant={showText ? "h5" : variant}
+              sx={{ fontWeight: "bold" }}
+            >
               {heading}
             </Typography>
             <p>{description}</p>

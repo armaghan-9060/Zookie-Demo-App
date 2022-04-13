@@ -1,4 +1,4 @@
-import { AppBar, Button, Tab, Tabs, Toolbar } from "@mui/material";
+import { AppBar, Button, List, Tab, Tabs, Toolbar } from "@mui/material";
 import { borderBottom, styled } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import logo from "../assets/zooki.png";
@@ -6,7 +6,9 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import { ListItemText } from "@mui/material";
+import { ListItem } from "@mui/material";
 const Menu = styled(Button)({
   marginLeft: "auto",
   color: "white",
@@ -41,8 +43,13 @@ function Header() {
   //     label: 'Home', value: '1', id: 'Home',
   //     label: 'Home', value: '1', id: 'Home',
   // }]
+  const iOS =
+    typeof navigator !== "undefined" &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent);
+  //
   const [colorChange, setColorchange] = useState(false);
   const [open, setOpen] = useState("");
+  const [openDrawer, setOpenDrawer] = useState(false);
   // dropdown
   const handleChange1 = (event: SelectChangeEvent) => {
     setOpen(event.target.value as string);
@@ -85,7 +92,108 @@ function Header() {
     overflow: "hidden",
     background: colorChange ? "black" : "transparent",
   });
-
+  const drawer = (
+    <React.Fragment>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => {
+          setOpenDrawer(false);
+        }}
+        onOpen={() => {
+          setOpenDrawer(true);
+        }}
+      >
+        <List>
+          <ListItem
+            divider
+            button
+            onClick={() => {
+              onScrollClick("Home");
+              setOpenDrawer(false);
+            }}
+          >
+            <ListItemText>Home</ListItemText>
+          </ListItem>
+          <ListItem
+            divider
+            button
+            onClick={() => {
+              onScrollClick("About");
+              setOpenDrawer(false);
+            }}
+          >
+            <ListItemText>About</ListItemText>
+          </ListItem>
+          <ListItem
+            divider
+            button
+            onClick={() => {
+              onScrollClick("Services");
+              setOpenDrawer(false);
+            }}
+          >
+            <ListItemText>Services</ListItemText>
+          </ListItem>
+          <ListItem
+            divider
+            button
+            onClick={() => {
+              onScrollClick("Home");
+              setOpenDrawer(false);
+            }}
+          >
+            <ListItemText>Feature</ListItemText>
+          </ListItem>
+          <ListItem
+            divider
+            button
+            onClick={() => {
+              onScrollClick("Home");
+              setOpenDrawer(false);
+            }}
+          >
+            <ListItemText>Pricing</ListItemText>
+          </ListItem>
+          <ListItem
+            divider
+            button
+            onClick={() => {
+              onScrollClick("Home");
+              setOpenDrawer(false);
+            }}
+          >
+            <ListItemText>Clients</ListItemText>
+          </ListItem>
+          <ListItem
+            divider
+            button
+            onClick={() => {
+              onScrollClick("Home");
+              setOpenDrawer(false);
+            }}
+          >
+            <ListItemText>Blog</ListItemText>
+          </ListItem>
+          <ListItem
+            divider
+            button
+            onClick={() => {
+              onScrollClick("Contact");
+              setOpenDrawer(false);
+            }}
+          >
+            <ListItemText>Contact Us</ListItemText>
+          </ListItem>
+        </List>
+      </SwipeableDrawer>
+      <Menu onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
+        {" "}
+        <MenuSharpIcon />{" "}
+      </Menu>
+    </React.Fragment>
+  );
   return (
     <StyledAppBar>
       <Toolbar>
@@ -95,10 +203,7 @@ function Header() {
           style={{ width: "100px", marginLeft: "40px" }}
         />
         {matches ? (
-          <Menu>
-            {" "}
-            <MenuSharpIcon />{" "}
-          </Menu>
+          drawer
         ) : (
           <Tabs
             sx={{ marginLeft: "auto" }}

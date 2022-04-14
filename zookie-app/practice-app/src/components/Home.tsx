@@ -33,6 +33,8 @@ const HomeMain = styled("div")((props: mainProps) => ({
   backgroundImage: `url(${HomeBg})`,
   backgroundSize: "cover",
   backgroundPosition: "center center",
+
+  paddingTop: "20px",
 }));
 
 const BackImg = styled(Box)((props) => ({
@@ -55,6 +57,14 @@ const BackImg = styled(Box)((props) => ({
     },
     paddingTop: "150px",
     paddingLeft: "30px",
+  },
+  [props.theme.breakpoints.only("xs")]: {
+    img: {
+      width: "180px",
+      height: "140px",
+    },
+    paddingTop: "130px",
+    paddingLeft: "10px",
   },
 }));
 
@@ -85,6 +95,7 @@ interface HomeProps {
   textcolor: string;
   maxwidth: string;
   imageHeight: string;
+  isbackground?: boolean;
   variant:
     | "h1"
     | "h2"
@@ -117,6 +128,7 @@ function Home({
   variant,
   ButtonType,
   isSpanButton,
+  isbackground,
 }: HomeProps) {
   const theme = useTheme();
   const showText = useMediaQuery(theme.breakpoints.down("lg"));
@@ -126,12 +138,14 @@ function Home({
         <MainContainer id="Home">
           <TextBox textcolor={textcolor} maxwidth={maxwidth}>
             <Typography
-              variant={showText ? "h5" : variant}
+              variant={showText ? "h6" : variant}
               sx={{ fontWeight: "bold" }}
             >
               {heading}
             </Typography>
-            <p>{description}</p>
+            <p style={{ fontSize: showText ? "10px" : "15px" }}>
+              {description}
+            </p>
             {isSpanButton ? (
               <TextButton>
                 {" "}
@@ -167,10 +181,12 @@ function Home({
               {" "}
               <img src={image} alt="Home animation" height={imageHeight} />{" "}
             </HeroImg>
-            <BackImg>
-              {" "}
-              <img src={HomeBg2} alt="Home animation" />{" "}
-            </BackImg>
+            {isbackground ? (
+              <BackImg>
+                {" "}
+                <img src={HomeBg2} alt="Home animation" />{" "}
+              </BackImg>
+            ) : null}
           </ImgBox>
         </MainContainer>
       </HomeMain>

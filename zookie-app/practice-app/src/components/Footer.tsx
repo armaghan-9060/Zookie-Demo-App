@@ -26,6 +26,18 @@ const useStyles = makeStyles({
     fontFamily: "san-serif",
     fontSize: "14px",
     lineHeight: "2",
+    cursor: "pointer",
+    "&:hover": {
+      color: "#FF8700 !important",
+      borderBottom: "1px solid #FF8700",
+      fontWeight: "bold",
+    },
+  },
+  textLink: {
+    color: "#6C757D",
+    fontFamily: "san-serif",
+    fontSize: "14px",
+    lineHeight: "2",
   },
   griditem: {
     margin: "7em",
@@ -40,7 +52,7 @@ const useStyles = makeStyles({
 function Footer() {
   const classes = useStyles();
   return (
-    <div>
+    <>
       <FooterDesign>
         <Grid
           container
@@ -53,7 +65,7 @@ function Footer() {
                 {" "}
                 ABOUT US{" "}
               </Grid>
-              <Grid item className={classes.link}>
+              <Grid item className={classes.textLink}>
                 {" "}
                 Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit.{" "}
                 <br /> Consequuntur, quos?{" "}
@@ -120,18 +132,20 @@ function Footer() {
               </Grid>
             </Grid>
           </Grid>
+          {
+            <LowerFooter>
+              <Grid container justifyContent="center">
+                <Grid item>
+                  <p style={{ color: "white", paddingTop: "10px" }}>
+                    2022 @Zooki. Design Themesbrand
+                  </p>
+                </Grid>
+              </Grid>
+            </LowerFooter>
+          }
         </Grid>
       </FooterDesign>
-      <LowerFooter>
-        <Grid container justifyContent="center">
-          <Grid item>
-            <p style={{ color: "white", paddingTop: "10px" }}>
-              2022 @Zooki. Design Themesbrand
-            </p>
-          </Grid>
-        </Grid>
-      </LowerFooter>
-    </div>
+    </>
   );
 }
 

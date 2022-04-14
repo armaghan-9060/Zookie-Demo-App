@@ -19,7 +19,7 @@ const AboutContainer = styled("div")({
   backgroundImage: `url(${AboutBg})`,
   backgroundSize: "cover",
   backgroundPosition: "center center",
-  paddingBottom: "10px",
+  paddingBottom: "40px",
 });
 
 const CardFlex = styled(Box)((props) => ({
@@ -121,7 +121,7 @@ function About() {
           image={AboutImage}
           bgColor="none"
           textcolor="black"
-          maxwidth="100%"
+          maxwidth="70%"
           imageHeight="400px"
           variant="h6"
           ButtonType="contained"

@@ -31,12 +31,13 @@ function App() {
           image={HomeImg}
           bgColor="#007bff"
           textcolor="white"
-          maxwidth="100%"
+          maxwidth="80%"
           imageHeight="600px"
           variant="h2"
           ButtonType="contained"
           buttonColor="#FF8700"
           buttonTextColor="white"
+          isbackground
         />
         <About />
         <Services />

@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Box, lineHeight, styled } from "@mui/system";
 import HeadingStyle from "./HeadingStyle";
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  TextareaAutosize,
+  TextField,
+  Typography,
+} from "@mui/material";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
@@ -12,13 +18,17 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import InsertEmoticonRoundedIcon from "@mui/icons-material/InsertEmoticonRounded";
 import axios, { Axios } from "axios";
-const ContactContainer = styled("div")({
-  height: "auto",
+const ContactContainer = styled("div")((props) => ({
+  height: "800px",
   backgroundColor: "#F8F9FA",
-});
+  [props.theme.breakpoints.down("lg")]: {
+    height: "auto",
+  },
+}));
 const CustomTextField = styled(TextField)({
   margin: "15px",
 });
+
 const CustomFollowButton = styled(Button)({});
 function Contact() {
   //const [name, setName] = useState("");
@@ -59,7 +69,7 @@ function Contact() {
   //};
   const theme = useTheme();
   const contactContainer = useMediaQuery(theme.breakpoints.down("lg"));
-  const contactContainer1 = useMediaQuery(theme.breakpoints.down("sm"));
+  const contactContainer1 = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <>
       <ContactContainer id="Contact">
@@ -69,9 +79,10 @@ function Contact() {
           container
           direction={contactContainer ? "column" : "row"}
           sx={{
-            boxShadow: "rgba(32, 29, 29, 0.24) 0px 3px 8px",
-            width: { lg: "1100px", md: "700px", sm: "500px", xs: "100%" },
-            ml: contactContainer1 ? 0 : 5,
+            boxShadow: { lg: "rgba(32, 29, 29, 0.24) 0px 3px 8px" },
+            width: { lg: "1100px", md: "100%", sm: "100%", xs: "100%" },
+            ml: contactContainer1 ? 0 : 8,
+            mb: contactContainer1 ? 0 : 0,
           }}
         >
           <Grid
@@ -79,7 +90,7 @@ function Contact() {
             container
             direction="column"
             justifyContent="center"
-            sx={{ ml: 1, p: { lg: 10, md: 10, sm: 5, xs: 3 } }}
+            sx={{ ml: 1, p: { lg: 10, md: 10, sm: 5, xs: 3 }, pl: { xs: 0 } }}
             lg={8}
           >
             <Grid
@@ -93,12 +104,12 @@ function Contact() {
                   label="Name"
                   type="text"
                   color="warning"
-                  variant="standard"
+                  variant="outlined"
                   id="name"
                   name="name"
                   value={userInfo.name}
                   onChange={(event) => changeHandler(event)}
-                  sx={{ width: "200px" }}
+                  sx={{ width: contactContainer ? "75%" : "200px" }}
                 />{" "}
               </Grid>
               <Grid item>
@@ -107,12 +118,12 @@ function Contact() {
                   label="Email"
                   type="email"
                   color="warning"
-                  variant="standard"
+                  variant="outlined"
                   id="email"
                   name="email"
                   value={userInfo.email}
                   onChange={(event) => changeHandler(event)}
-                  sx={{ width: "200px", ml: 2 }}
+                  sx={{ width: contactContainer ? "75%" : "200px", ml: 2 }}
                 />{" "}
               </Grid>
             </Grid>
@@ -122,8 +133,8 @@ function Contact() {
                 label="Subject"
                 color="warning"
                 type="text"
-                sx={{ width: contactContainer ? "300px" : "450px" }}
-                variant="standard"
+                sx={{ width: contactContainer ? "75%" : "450px" }}
+                variant="outlined"
                 id="subject"
                 name="subject"
                 value={userInfo.subject}
@@ -132,18 +143,15 @@ function Contact() {
             </Grid>
             <Grid item>
               {" "}
-              <CustomTextField
-                label="Message"
-                variant="standard"
-                type="text"
+              <TextareaAutosize
+                minRows={6}
+                placeholder="Message"
                 color="warning"
-                sx={{ width: contactContainer ? "300px" : "450px" }}
-                id="message"
-                multiline
-                rows={4}
-                name="message"
-                value={userInfo.message}
-                onChange={(event) => changeHandler(event)}
+                style={{
+                  width: contactContainer ? "75%" : "450px",
+                  margin: "15px",
+                  background: "transparent",
+                }}
               />{" "}
             </Grid>
             <Grid item>

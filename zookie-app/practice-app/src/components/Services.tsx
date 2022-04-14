@@ -21,6 +21,8 @@ import AppleIcon from "@mui/icons-material/Apple";
 import NatureOutlinedIcon from "@mui/icons-material/NatureOutlined";
 import LightbulbCircleOutlinedIcon from "@mui/icons-material/LightbulbCircleOutlined";
 import { useEffect, useState } from "react";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 const ServicesContainer = styled("div")({
   width: "100%",
   height: "auto",
@@ -38,7 +40,9 @@ const CardFlex1 = styled(Box)({
 function Services() {
   // hook to hold data from online api
   const [data, setData] = useState([]);
-
+  //media query
+  const theme = useTheme();
+  const marginText = useMediaQuery(theme.breakpoints.down("lg"));
   //hook to to run API instantly using useeffect
   useEffect(() => {
     axios
@@ -197,7 +201,9 @@ function Services() {
     <>
       <ServicesContainer id="Services">
         <HeadingStyle heading="OUR SERVICES"></HeadingStyle>
-        <CardFlex1 sx={{ width: "100%" }}>
+        <CardFlex1
+          sx={{ width: "100%", marginLeft: marginText ? "0px" : "-45px" }}
+        >
           {CardData.map((card, ind) => (
             <>
               {ind < 6

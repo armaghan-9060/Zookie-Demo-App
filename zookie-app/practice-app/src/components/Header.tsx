@@ -82,16 +82,19 @@ function Header() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("lg"));
 
-  const StyledAppBar = styled("div")({
+  const StyledAppBar = styled("div")((props) => ({
     position: "fixed",
     zIndex: 100,
     backgroundColor: "black",
     width: "100%",
     maxWidth: "100vw",
     height: "75px",
-    overflow: "hidden",
+    overflowX: "hidden",
     background: colorChange ? "black" : "transparent",
-  });
+    [props.theme.breakpoints.down("lg")]: {
+      background: "black",
+    },
+  }));
   const drawer = (
     <React.Fragment>
       <SwipeableDrawer

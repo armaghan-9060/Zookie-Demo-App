@@ -1,11 +1,11 @@
-import { AppBar, Button, List, Tab, Tabs, Toolbar } from "@mui/material";
-import { borderBottom, styled } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import { Button, List, Tab, Tabs, Toolbar } from "@mui/material";
+import { styled } from "@mui/system";
+import React, { useState } from "react";
 import logo from "../assets/zooki.png";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { SelectChangeEvent } from "@mui/material/Select";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { ListItemText } from "@mui/material";
 import { ListItem } from "@mui/material";
@@ -108,7 +108,7 @@ function Header() {
           setOpenDrawer(true);
         }}
       >
-        <List>
+        <List sx={{ width: "250px !important" }}>
           <ListItem
             divider
             button

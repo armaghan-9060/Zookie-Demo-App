@@ -48,6 +48,7 @@ export const ImgBox = styled(Box)((props) => ({
   [props.theme.breakpoints.down("sm")]: {
     alignItems: "center",
     justifyContent: "center",
+    marginLeft: "-28px",
   },
   [props.theme.breakpoints.down("md")]: {
     alignItems: "center",
@@ -77,6 +78,7 @@ export const HeroImg = styled(Box)((props) => ({
     img: {
       height: "280px",
       width: "200px",
+      //paddingRight: "50px",
     },
   },
   [props.theme.breakpoints.down("xs")]: {

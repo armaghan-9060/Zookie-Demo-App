@@ -1,13 +1,10 @@
 import React from "react";
 import { styled } from "@mui/system";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Home from "./Home";
 import AboutBg from "../assets/bg-light-about.png";
 import HeadingStyle from "./HeadingStyle";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import { CardActionArea } from "@mui/material";
+
 import CustmCard from "./CustmCard";
 import AboutImage from "../assets/about-img.jpeg";
 import CoPresentOutlinedIcon from "@mui/icons-material/CoPresentOutlined";

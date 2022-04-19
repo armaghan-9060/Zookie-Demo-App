@@ -1,22 +1,10 @@
-import { SvgIconComponent } from "@mui/icons-material";
-import {
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  Typography,
-  SvgIconTypeMap,
-  Button,
-} from "@mui/material";
-import LightbulbCircleOutlinedIcon from "@mui/icons-material/LightbulbCircleOutlined";
+import { Card, CardContent, Typography, Button } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import React from "react";
-import { ReactNode } from "react";
-import { JsxElement } from "typescript";
 import { styled } from "@mui/styles";
-import { Box, color } from "@mui/system";
+import { Box } from "@mui/system";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 interface CardsProp {
   isleft: Boolean;
   heading: string;

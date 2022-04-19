@@ -1,12 +1,11 @@
 import React from "react";
-import { styled, width } from "@mui/system";
-import { Grid, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import { Box, BoxProps } from "@mui/material";
+import { styled } from "@mui/system";
+import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { Button } from "@mui/material";
 import HomeBg2 from "../assets/homr-2-bg-bottom.png";
 import HomeBg from "../assets/home-2-bg.png";
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CircleRoundedIcon from "@mui/icons-material/CircleRounded";
 import {
@@ -15,8 +14,6 @@ import {
   ImgBox,
   HeroImg,
 } from "../components/Reuseable";
-import { JsxElement } from "typescript";
-import { MarginOutlined } from "@mui/icons-material";
 
 interface mainProps {
   bgColor: string;
@@ -57,6 +54,7 @@ const BackImg = styled(Box)((props) => ({
     },
     paddingTop: "150px",
     paddingLeft: "30px",
+    // paddingRight: "50px",
   },
   [props.theme.breakpoints.only("xs")]: {
     img: {

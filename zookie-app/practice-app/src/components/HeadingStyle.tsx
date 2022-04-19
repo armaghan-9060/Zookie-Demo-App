@@ -32,7 +32,14 @@ interface HeadingProp {
 function HeadingStyle({ heading }: HeadingProp) {
   return (
     <>
-      <Box sx={{ p: 8 }}>
+      <Box
+        sx={{
+          p: { lg: 8, md: 8, sm: 8 },
+          pl: { xs: 3 },
+          pt: { xs: 8 },
+          pb: { xs: 8 },
+        }}
+      >
         <HeadingStyled>{heading}</HeadingStyled>
         <TitleBorder>
           <TitleBorder2></TitleBorder2>

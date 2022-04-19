@@ -1,10 +1,9 @@
-import { Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import { Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import footer from "/Users/trimulabs/Documents/GitHub/Zookie-Demo-App/zookie-app/practice-app/src/assets/footer-bg.png";
-import { classicNameResolver } from "typescript";
+
 const FooterDesign = styled("div")({
   width: "100%",
   height: "auto",

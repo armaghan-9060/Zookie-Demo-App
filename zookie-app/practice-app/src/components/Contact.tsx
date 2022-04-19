@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, lineHeight, styled } from "@mui/system";
+import { styled } from "@mui/system";
 import HeadingStyle from "./HeadingStyle";
 import {
   Button,
@@ -15,9 +15,9 @@ import { IconButton } from "@mui/material";
 import FacebookSharpIcon from "@mui/icons-material/FacebookSharp";
 import WhatsappSharpIcon from "@mui/icons-material/WhatsappSharp";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import InsertEmoticonRoundedIcon from "@mui/icons-material/InsertEmoticonRounded";
-import axios, { Axios } from "axios";
+import axios from "axios";
 const ContactContainer = styled("div")((props) => ({
   height: "800px",
   backgroundColor: "#F8F9FA",
@@ -97,6 +97,7 @@ function Contact() {
               item
               container
               direction={contactContainer ? "column" : "row"}
+              sx={{ pl: { xs: 5 } }}
             >
               <Grid item>
                 {" "}
@@ -109,7 +110,9 @@ function Contact() {
                   name="name"
                   value={userInfo.name}
                   onChange={(event) => changeHandler(event)}
-                  sx={{ width: contactContainer ? "75%" : "200px" }}
+                  sx={{
+                    width: contactContainer ? "75%" : "200px",
+                  }}
                 />{" "}
               </Grid>
               <Grid item>
@@ -123,17 +126,22 @@ function Contact() {
                   name="email"
                   value={userInfo.email}
                   onChange={(event) => changeHandler(event)}
-                  sx={{ width: contactContainer ? "75%" : "200px", ml: 2 }}
+                  sx={{
+                    width: contactContainer ? "75%" : "200px",
+                    ml: 2,
+                  }}
                 />{" "}
               </Grid>
             </Grid>
-            <Grid item>
+            <Grid item sx={{ pl: { xs: 5 } }}>
               {" "}
               <CustomTextField
                 label="Subject"
                 color="warning"
                 type="text"
-                sx={{ width: contactContainer ? "75%" : "450px" }}
+                sx={{
+                  width: contactContainer ? "75%" : "450px",
+                }}
                 variant="outlined"
                 id="subject"
                 name="subject"
@@ -141,7 +149,7 @@ function Contact() {
                 onChange={(event) => changeHandler(event)}
               />{" "}
             </Grid>
-            <Grid item>
+            <Grid item sx={{ pl: { xs: 5 } }}>
               {" "}
               <TextareaAutosize
                 minRows={6}
@@ -154,7 +162,7 @@ function Contact() {
                 }}
               />{" "}
             </Grid>
-            <Grid item>
+            <Grid item sx={{ pl: { xs: 5 } }}>
               {" "}
               <Button
                 onClick={submit}
